@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --notion-black: #2f3437;
+  --notion-gray: #787774;
+  --notion-light-gray: #e3e3e1;
+  --notion-white: #ffffff;
+  --notion-border: #e9ecef;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, sans-serif; /* Modified this line */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--notion-white);
+  color: var(--notion-black);
+}
+
+/* .notion-block {
+  @apply border border-[--notion-border] rounded-lg p-6 bg-white hover:bg-gray-50 transition-colors duration-200;
+}
+
+.notion-heading {
+  @apply text-2xl font-semibold text-[--notion-black] mb-4;
+}
+
+.notion-text {
+  @apply text-[--notion-gray] leading-relaxed;
+}
+
+.notion-icon {
+  @apply w-5 h-5 text-[--notion-gray];
+}
+
+.notion-button {
+  @apply px-4 py-2 rounded-md border border-[--notion-border] text-[--notion-black] hover:bg-gray-50 transition-colors duration-200;
+}
+
+.notion-button-primary {
+  @apply px-4 py-2 rounded-md border-0 bg-[--notion-black] text-white hover:bg-[#1A1D1E] transition-colors duration-200;
+}
+
+.notion-checkbox {
+  @apply h-4 w-4 rounded border-gray-300 text-[--notion-black] focus:ring-2 focus:ring-[--notion-black];
+}
+
+.notion-input {
+  @apply px-3 py-2 border border-[--notion-border] rounded-md focus:outline-none focus:ring-2 focus:ring-[--notion-black] focus:border-transparent;
+} */
+
+.mood-slider {
+  @apply w-full h-2 bg-gray rounded-lg appearance-none cursor-pointer;
+}
+
+.mood-slider::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full bg-[--black] cursor-pointer;
+}
+
+.default-icon {
+  @apply w-6 h-6 text-[--primary];
+}
