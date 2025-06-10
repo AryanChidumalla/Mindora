@@ -86,7 +86,7 @@ function Articles() {
 
         {/* Modal Overlay */}
         {specificArticle.bool && (
-          <div className="absolute inset-0 flex items-center justify-center px-24 py-12 z-20">
+          <div className="absolute inset-0 flex items-center justify-center p-4 md:px-24 py-12 z-20">
             <div
               className="bg-black absolute inset-0 opacity-50 z-10"
               onClick={() =>
