@@ -11,23 +11,29 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { HomePage } from "./pages/HomePage";
+import Loading from "./pages/Loading";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      setUser(authUser);
-    });
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      setUser(currentUser);
+      setLoading(false);
+    } else {
+      const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+        setUser(authUser);
+        setLoading(false);
+      });
+      return () => unsubscribe();
+    }
+  }, []);
 
-    return () => unsubscribe();
-  });
-
-  async function logOut() {
-    await auth.signOut();
+  if (loading) {
+    return <Loading />;
   }
-
-  // logOut();
 
   return (
     <Router>

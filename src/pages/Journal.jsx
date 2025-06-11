@@ -8,6 +8,7 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
+import Loading from "./Loading";
 
 function Journal() {
   const today = new Date().toISOString().split("T")[0];
@@ -24,11 +25,13 @@ function Journal() {
     try {
       const entriesRef = collection(db, "userData", userId, "journals");
       const snapshot = await getDocs(entriesRef);
+
       const fetched = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      setEntries(fetched);
+
+      setEntries(fetched.reverse());
     } catch (error) {
       console.error("Failed to fetch journals", error);
     } finally {
@@ -116,7 +119,9 @@ function Journal() {
       </button>
 
       {loading ? (
-        <div className="text-center mt-6">Loading entries...</div>
+        <div className="text-center">
+          <Loading />
+        </div>
       ) : entries.length === 0 ? (
         <div className="text-center mt-6 text-gray-500">
           No journal entries yet.
@@ -132,8 +137,11 @@ function Journal() {
               <div className="font-bold text-lg line-clamp-1">
                 {entry.title}
               </div>
-              <div className="text-sm line-clamp-3">{entry.body}</div>
-              <div className="text-xs mt-2 text-gray-500">{entry.id}</div>
+              <div className="text-s line-clamp-3">{entry.body}</div>
+              <hr className="my-4" />
+              <div className="text-xs font-bold mt-2 text-primary">
+                {entry.id}
+              </div>
             </div>
           ))}
         </div>

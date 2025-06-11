@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { app } from "../firebase";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import Loading from "./Loading";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -63,7 +64,8 @@ function Articles() {
       <div className="grid grid-cols-1 gap-6 overflow-y-scroll scrollbar-none sm:grid-cols-2 lg:grid-cols-4">
         {filteredArticles.length === 0 ? (
           <div className="col-span-4 text-center text-gray-500">
-            Loading Articles..
+            {/* Loading Articles.. */}
+            <Loading />
           </div>
         ) : (
           filteredArticles.map((item, index) => (

@@ -82,7 +82,7 @@ function Dashboard() {
 
   return (
     // <div className="min-h-screen bg-white px-4 py-8">
-    <div className="w-full h-full px-4 py-4">
+    <div className="w-full h-full px-4 py-4 overflow-y-scroll">
       <main>
         {/* Header */}
         <div className="border-2 border-primary px-4 py-4 rounded mb-6">
